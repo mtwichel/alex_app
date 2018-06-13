@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "443331520097",
+    "firebase_url": "https://alexapp-c6344.firebaseio.com",
+    "project_id": "alexapp-c6344",
+    "storage_bucket": "alexapp-c6344.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443331520097:android:fd47149f15574a86",
+        "android_client_info": {
+          "package_name": "com.marcustwichel.alexapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443331520097-oevhs2jsccvhkbod2dau5k2q6hacnrk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marcustwichel.alexapp",
+            "certificate_hash": "a2a1a271a986f0ca8470373d1f1d85c7f0ecefdc"
+          }
+        },
+        {
+          "client_id": "443331520097-5nuga3uq377e8n02i4qg35b374b1h5ob.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "443331520097-5nuga3uq377e8n02i4qg35b374b1h5ob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA93chxgOY3lsadpOcXWthC5KdwLten9qM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443331520097-5nuga3uq377e8n02i4qg35b374b1h5ob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

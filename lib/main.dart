@@ -82,7 +82,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? new Text("no text")
                 : new ListView.builder(
               itemBuilder: (BuildContext context, int index) =>
-              new Text("hi"),
+              new Column(
+                children: <Widget>[
+                  new Text(ingredients[index]["name"]),
+                  new Text(ingredients
+                  [index]
+                  ["nutrition"]
+//                  ["nutrients"]
+//                  [0]
+//                  ["title"]
+                  )
+                ],
+              ),
               itemCount: ingredients.length,)
             ),
           ],

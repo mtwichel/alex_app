@@ -6,6 +6,7 @@ dependencies:
   image_picker:
   http:
   json:
+  sqflite:
   flutter:
     sdk: flutter
 

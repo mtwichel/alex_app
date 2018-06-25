@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: new FloatingActionButton(
         onPressed: analyzePicture,
         tooltip: 'Increment',
-        child: new Icon(Icons.add),
+        child: new Icon(Icons.camera_alt),
       ),
     );
   }
@@ -92,36 +92,18 @@ class _MyHomePageState extends State<MyHomePage> {
       currentLabels = textList;
     });
     await Future.forEach(textList, (text) async{
+      print(text.text);
       var inputString = text.text;
-      var result = await http.get(
-        'https://api.edamam.com/api/nutrition-data?app_id=be779c43&app_key=42d7a3fee3bbda47cbbaf4db31875046&ingr=$inputString',);
-      var resultJson = await json.decode(result.body);
-      if(resultJson["calories"] != 0 && resultJson["totalWeight"] != 0.0){
-        print(text.text);
-        resultList.add(new Ingredient(
-          title: text.text,
-          calories: resultJson["calories"].toString(),
-          fat: getNutrient(resultJson, "FAT"),
-          carbs: getNutrient(resultJson, "CHOCDF"),
-          sugars: getNutrient(resultJson, "SUGAR"),
-          protein: getNutrient(resultJson, "PROCNT"),
-          sodium: getNutrient(resultJson, "NA"),
-          fiber: getNutrient(resultJson, "FIBTG"),
-        ));
-      }
+      var response = await http.get(
+        'https://us-central1-alexapp-c6344.cloudfunctions.net/analyzeRecipe?input=$inputString',);
+      var resultJson = await json.decode(response.body);
+      var parseResult = new ParseResult.fromJson(resultJson);
+      resultList.add(new Ingredient(title: parseResult.ingredient));
     });
 
     setState(() {
       ingredients = resultList;
     });
-  }
-
-  getNutrient(var json, var type){
-    if(json["totalNutrients"][type] == null){
-      return null;
-    }else{
-      return json["totalNutrients"][type]["quantity"].toString() + json["totalNutrients"][type]["unit"];
-    }
   }
 }
 
@@ -213,5 +195,15 @@ class Ingredient{
     this.fiber,
     this.title,
     });
+}
 
+class ParseResult{
+  num quantity;
+  String unit;
+  String ingredient;
+
+  ParseResult.fromJson(Map<String, dynamic> json)
+      : quantity = json['quantity']==null ? null : num.parse(json['quantity']),
+        unit = json['unit'],
+        ingredient = json['ingredient'];
 }

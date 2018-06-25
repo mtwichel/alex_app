@@ -7,6 +7,7 @@ dependencies:
   http:
   json:
   sqflite:
+  path_provider:
   flutter:
     sdk: flutter
 
@@ -34,6 +35,9 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+
+  assets:
+    - assets/nutrients.db
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
